@@ -12,8 +12,8 @@ jobs:
       - name: Set variables
         run: |
           LANGUAGE="true"
-        outputs:
-          language: ${{ $LANGUAGE }}
+    outputs:
+      language: ${{ $LANGUAGE }}
   test:
     runs-on: ubuntu-latest
     needs: build

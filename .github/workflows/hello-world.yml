@@ -1,8 +1,26 @@
-name: Hello World
+name: Conditional Jobs Workflow
+
 on: push
+
 jobs:
-  hello-job:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Echo text
-      run: echo "Hello, world!"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set environment variable
+        run: echo "true" >> $GITHUB_ENV
+        env:
+          MY_CONDITION: "true"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    if: env.MY_CONDITION == 'true'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run tests
+        run: echo "Running tests..."

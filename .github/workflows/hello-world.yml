@@ -11,9 +11,7 @@ jobs:
 
       - name: Set variables
         run: |
-          LANGUAGE="true"
-    outputs:
-      language: ${{ $LANGUAGE }}
+          echo "language=true" >> $GITHUB_OUTPUT
   test:
     runs-on: ubuntu-latest
     needs: build

@@ -14,7 +14,7 @@ jobs:
     outputs:
       language: ${{ steps.lang.outputs.language }}
   test:
-    if: needs.build.outputs.language == 'true'
+    if: needs.build.outputs.language == 'false'
     runs-on: ubuntu-latest
     needs: build
     steps:
